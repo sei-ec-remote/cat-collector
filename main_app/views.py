@@ -25,3 +25,10 @@ def cats_index(request):
     # we can gather relations from SQL using our model methods
     cats = Cat.objects.all()
     return render(request, 'cats/index.html', { 'cats': cats })
+
+# detail route for cats
+# cat_id is defined, expecting an integer, in our url
+def cats_detail(request, cat_id):
+    cat = Cat.objects.get(id=cat_id)
+
+    return render(request, 'cats/detail.html', { 'cat': cat })
