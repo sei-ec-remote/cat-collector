@@ -13,3 +13,11 @@ fun lil django app all about cats
 route controller action 
 /cats  cats index view all cats
 /cats/:id show cats view one cat
+
+
+### Development Steps
+
+    1. Start by adding the url, to our urls
+    2. create the view function associated with that url
+    3. make the html template for that view
+    4. add some functionality(UI) to quickly get to that template
