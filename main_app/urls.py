@@ -16,7 +16,9 @@ urlpatterns = [
     path('cats/<int:cat_id>/add_feeding/', views.add_feeding, name='add_feeding'),
     path('cats/<int:cat_id>/', views.cats_detail, name='detail'),
     # add association
+    path('cats/<int:cat_id>/assoc_toy/<int:toy_id>/', views.assoc_toy, name='assoc_toy'),
     # add unassociation
+    path('cats/<int:cat_id>/unassoc_toy/<int:toy_id>/', views.unassoc_toy, name='unassoc_toy'),
     # index, show, create, update, delete
     path('toys/', views.ToyList.as_view(), name='toys_index'),
     path('toys/create/', views.ToyCreate.as_view(), name='toys_create'),
