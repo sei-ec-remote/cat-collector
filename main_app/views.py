@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Cat
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from .models import Cat, Toy
 from .forms import FeedingForm
 
 # temporary cats for building templates
@@ -69,3 +71,35 @@ def add_feeding(request, cat_id):
         new_feeding.cat_id = cat_id
         new_feeding.save()
     return redirect('detail', cat_id=cat_id)
+
+# ToyList
+class ToyList(ListView):
+    model = Toy
+    template_name = 'toys/index.html'
+
+# ToyDetail
+class ToyDetail(DetailView):
+    model = Toy
+    template_name = 'toys/detail.html'
+
+# ToyCreate
+class ToyCreate(CreateView):
+    model = Toy
+    fields = ['name', 'color']
+
+    # define what the inherited method is_valid does(we'll update this later)
+    def form_valid(self, form):
+        # we'll use this later, but implement right now
+        # we'll need this when we add auth
+        # super allows for the original inherited CreateView function to work as it was intended
+        return super().form_valid(form)
+
+# ToyUpdate
+class ToyUpdate(UpdateView):
+    model = Toy
+    fields = ['name', 'color']
+
+# ToyDelete
+class ToyDelete(DeleteView):
+    model = Toy
+    success_url = '/toys/'

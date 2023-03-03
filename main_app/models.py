@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
 
 # A tuple of 2-tuples
 MEALS = (
@@ -8,12 +9,25 @@ MEALS = (
     ('D', 'Dinner')
 )
 # Create your models here.
+class Toy(models.Model):
+    name = models.CharField(max_length=50)
+    color = models.CharField(max_length=20)
+
+    def __str__(self):
+        return f'{self.color} {self.name}'
+    
+    def get_absolute_url(self):
+        return reverse('toys_detail', kwargs={'pk': self.id})
 
 class Cat(models.Model):
     name = models.CharField(max_length=100)
     breed = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
     age = models.IntegerField()
+    toys = models.ManyToManyField(Toy)
+
+    def fed_for_today(self):
+        return self.feeding_set.filter(date=date.today()).count() >= len(MEALS)
 
     # dunder str method return cat name
     def __str__(self):
@@ -40,3 +54,7 @@ class Feeding(models.Model):
         # this method is coming from django
         # produced like this: get_<name_of_field>_display()
         return f"{self.get_meal_display()} on {self.date}"
+    
+    # change the default sort
+    class Meta:
+        ordering = ['-date']
