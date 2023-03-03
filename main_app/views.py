@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Cat
 
 # temporary cats for building templates
@@ -32,3 +33,16 @@ def cats_detail(request, cat_id):
     cat = Cat.objects.get(id=cat_id)
 
     return render(request, 'cats/detail.html', { 'cat': cat })
+
+class CatCreate(CreateView):
+    model = Cat
+    # the fields attribute is required for a createview. These inform the form
+    fields = '__all__'
+    # we could also have written our fields like this:
+    # fields = ['name', 'breed', 'description', 'age']
+    # we need to add redirects when we make a success
+    # success_url = '/cats/{cat_id}'
+    # or, we could redirect to the index page if we want
+    # success_url = '/cats'
+    # what django recommends, is adding a get_absolute_url method to the model
+    

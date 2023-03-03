@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>Add Cat</h1>
+    <!-- by leaving the action empty, this allows the form to submit -->
+    <!-- to the same url that was used to render it. (the submit changes the HTTP to POST) -->
+    <form action="" method="POST">
+        <!-- Django requires is our cross-site resource (forgery?) (fraud?) token -->
+        {% csrf_token %}
+        <table>
+            <!-- Render the inputs inside of a table with <tr>s and <td>s -->
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Submit!" class="btn">
+    </form>
+
+{% endblock %}

@@ -10,5 +10,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     # paths for cats
     path('cats/', views.cats_index, name='index'),
+    path('cats/create', views.CatCreate.as_view(), name='cats_create'),
     path('cats/<int:cat_id>/', views.cats_detail, name='detail'),
 ]
