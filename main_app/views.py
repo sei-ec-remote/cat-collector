@@ -120,6 +120,7 @@ class ToyDelete(DeleteView):
 # view for adding photos
 def add_photo(request, cat_id):
     # photo-file will be the name attribute of our form input
+    # input type will be file
     photo_file = request.FILES.get('photo-file', None)
     # use conditional logic to make sure a file is present
     if photo_file:
