@@ -62,7 +62,7 @@ class CatCreate(LoginRequiredMixin, CreateView):
     # the fields attribute is required for a createview. These inform the form
     # fields = '__all__'
     # we could also have written our fields like this:
-    fields = ['name', 'breed', 'description', 'age']
+    fields = ['name', 'breed', 'description', 'age', 'toys']
     # we need to add redirects when we make a success
     # success_url = '/cats/{cat_id}'
     # or, we could redirect to the index page if we want
