@@ -134,3 +134,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# add this variable to tell django where to redirect upon login
+LOGIN_REDIRECT_URL = '/cats/'
+
+# add this variable to tell django where to redirect upon logout
+LOGOUT_REDIRECT_URL = '/'
