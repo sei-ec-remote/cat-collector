@@ -19,6 +19,9 @@ urlpatterns = [
     path('cats/<int:cat_id>/assoc_toy/<int:toy_id>/', views.assoc_toy, name='assoc_toy'),
     # add unassociation
     path('cats/<int:cat_id>/unassoc_toy/<int:toy_id>/', views.unassoc_toy, name='unassoc_toy'),
+    # add_photo
+    path('cats/<int:cat_id>/add_photo/', views.add_photo, name='add_photo'),
+    # toys down here
     # index, show, create, update, delete
     path('toys/', views.ToyList.as_view(), name='toys_index'),
     path('toys/create/', views.ToyCreate.as_view(), name='toys_create'),
